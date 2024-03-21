@@ -1,5 +1,5 @@
-TARGETS := atari apple2
-PROGRAM := httpbin
+TARGETS := apple2
+PROGRAM := yaail
 # set to 1 to make application auto start on boot of disk
 AUTOSTART := 1
 
