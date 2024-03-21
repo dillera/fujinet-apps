@@ -23,6 +23,40 @@ void load_image(const char* url) {
     handle_err("get:close");
 }
 
+void handle_err(char *reason) {
+    if (err) {
+        printf("Error: %d (d: %d) %s\n", err, fn_device_error, reason);
+        cgetc();
+        exit(1);
+    }
+}
+
+char *create_url(char *method) {
+    sprintf(url_buffer, "%s%s", httpbin, method);
+    return (char *) url_buffer;
+}
+
+void post(char *devicespec, char *data) {
+    set_json(url);
+    network_http_post(devicespec, data);
+}
+
+void body(char *devicespec, char *r, uint16_t len) {
+    strcpy(r, "NO DATA");
+    err = network_http_set_channel_mode(devicespec, HTTP_CHAN_MODE_BODY);
+    handle_err("body chan mode");
+    err = network_read(devicespec, (uint8_t *) r, len);
+    handle_err("body read");
+}
+
+void set_json(char *devicespec) {
+    network_http_start_add_headers(devicespec);
+    network_http_add_header(devicespec, "Accept: application/json");
+    network_http_add_header(devicespec, "Content-Type: application/json");
+    network_http_end_add_headers(devicespec);
+}
+
+
 
 // Function to display the image on the Apple II screen
 void display_image(const unsigned char* image_data) {
