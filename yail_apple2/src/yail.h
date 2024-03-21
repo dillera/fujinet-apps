@@ -1,7 +1,12 @@
-#ifndef HTTPBIN_H
-#define HTTPBIN_H
+#ifndef YAAIL_H
+#define YAAIL_H
 
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
 
 void add_header(char *devicespec, char *header);
 char *create_url(char *method);
