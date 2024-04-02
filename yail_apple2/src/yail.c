@@ -12,7 +12,7 @@ char result[1024];
 char *version = "v1.3.14";
 char *my_version = "v1.0.0";
 char *url;
-char* image_url = "n:http://fujinet.diller.org/APPLE/zebra.dhr";
+char* image_url = "n:http://fujinet.diller.org/APPLE/black.gr";
 char* image_data;
 uint8_t err = 0;
 uint16_t conn_bw;
